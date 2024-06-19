@@ -1,4 +1,2 @@
 #!/bin/bash
-tail -n 2 iacta | head -n 1 | tee -a iacta
-#!/bin/bash
 tail -n 1 iacta | tee -a iacta
