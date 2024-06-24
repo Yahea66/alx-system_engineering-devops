@@ -1,0 +1,2 @@
+#!/bin/bash
+find / -maxdepth 0 -path $PATH -type d | wc -l
