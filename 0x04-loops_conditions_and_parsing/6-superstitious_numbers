@@ -4,11 +4,11 @@ counter=1
 while (( counter < 20 ))
 do
 echo "$counter"
-if (( counter == 3 )); then
+if (( counter == 4 )); then
  echo "bad luck from China" 
-elif ((  counter == 8 )); then
+elif ((  counter == 9 )); then
 echo "bad luck from Japan" 
-elif (( counter == 16 )); then
+elif (( counter == 17 )); then
 echo "bad luck from Italy" 
 fi
 ((counter++))
