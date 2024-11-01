@@ -7,16 +7,16 @@ do
     # Ensure the directory corresponds to a PID by checking if /proc/[pid]/comm exists
     if [ -f "/comm" ]; then
         # Read the process name from /proc/[pid]/comm
-        proc_name=
+	proc_name=$(cat "$pid/comm/")
 
         # Check if the process name contains 'bash'
-        if [[ "" == *"bash"* ]]; then
+        if [[ "$proc_name" == *"bash"* ]]; then
             # Extract the PID from the path
             # This removes the prefix '/proc/' and leaves only the PID
-            just_pid=
+            just_pid=${pid#/proc/}
 
             # Output the PID and process name
-            echo " "
+            echo "$just_pid $proc_name"
         fi
     fi
 done
