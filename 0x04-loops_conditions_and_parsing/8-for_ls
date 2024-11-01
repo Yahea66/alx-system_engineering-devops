@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script displays The content of the current directory
+for file in *
+do
+name_after=$(echo "$file" | cut -d'-' -f2-)
+echo "$name_after"
+done
