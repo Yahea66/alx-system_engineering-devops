@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Display PIDs and names of processes containing the word 'bash'
+
+# Iterate over all entries in /proc that are directories with numeric names
+for pid in /proc/[0-9]*
+do
+    # Ensure the directory corresponds to a PID by checking if /proc/[pid]/comm exists
+    if [ -f "/comm" ]; then
+        # Read the process name from /proc/[pid]/comm
+        proc_name=
+
+        # Check if the process name contains 'bash'
+        if [[ "" == *"bash"* ]]; then
+            # Extract the PID from the path
+            # This removes the prefix '/proc/' and leaves only the PID
+            just_pid=
+
+            # Output the PID and process name
+            echo " "
+        fi
+    fi
+done
