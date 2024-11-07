@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Summarizes TCP and UDP listening sockets and UNIX domain socket details using netstat.
+
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
+
+# Display listening sockets for TCP with their PID and program names
+netstat -tlnp
+
+# Display listening sockets for UDP with their PID and program names
+netstat -ulnp
+
+echo "Active UNIX domain sockets (only servers)"
+echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
+
+# Display UNIX listening sockets with their PID and program names
+netstat -lxnp
