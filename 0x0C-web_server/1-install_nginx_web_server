@@ -1,26 +1,8 @@
 #!/usr/bin/env bash
-#configures a new Ubuntu machine to respect above requirements
+#configures a new Ubuntu machine to respect certain requirments
 
-apt-get update
-apt-get install -y nginx
-
-echo "Hello World!" > /var/www/html/index.html
-
-cat <<EOF > /etc/nginx/sites-available/default
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    root /var/www/html;
-    index index.html;
-
-    server_name _;
-
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-}
-EOF
-
-nginx_pid=$(cat /run/nginx.pid)
-kill -HUP $nginx_pid
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo chown -R ubuntu /var/www
+echo "Hello World" > /var/www/html/html.index
+sudo service nginx start
