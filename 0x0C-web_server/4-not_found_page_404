@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Configure your Nginx server so that /redirect_me is redirecting to another page.
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo chown -R ubuntu /var/www /etc/nginx
+echo "Hello World!" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+sed -i '/server_name _;/a \\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.fast.com\/ar\/;\n\t}\n\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\tinternal;\n\t}' /etc/nginx/sites-available/default
+sudo service nginx restart
