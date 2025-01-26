@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# configures a new HAproxy as a load balancer
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+sudo systemctl enable haproxy
+sudo chown -R ubuntu /etc/haproxy
+echo '
+frontend http_front
+	bind *:80
+	default_backend http_back
+
+backend http_back
+	balance roundrobin
+	server 662525-web-01 100.25.33.107:80
+	server 662525-web-02 54.237.104.37:80
+' >> /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
