@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# a Bash script that will display information about subdomains.
+
+fetch_dns() {
+	local domain=$1
+	local subdomain=$2
+	local ipaddress=$(dig $subdomain.$domain | awk '/ANSWER SECTION:/,/^$/' | awk '/IN/ {print $5}')
+
+	echo "The subdomain ${subdomain} is a A record and points to ${ipaddress}"
+}
+
+domain=$1
+subdomain=$2
+
+if [ -n $domain ] && [ -z $subdomain ]; then
+	fetch_dns $domain "www"
+	fetch_dns $domain "lb-01"
+	fetch_dns $domain "web-01"
+	fetch_dns $domain "web-02"
+
+else
+	fetch_dns $domain $subdomain
+fi
