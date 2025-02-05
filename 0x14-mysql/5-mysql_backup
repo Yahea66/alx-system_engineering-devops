@@ -3,5 +3,9 @@
 BACKUP_DATE=$(date +%d-%m-%y)
 ARCHIVE_NAME=${BACKUP_DATE}.tar.gz
 
-mysqldump -u root -p "$1" --all-databases  > backup.sql
+sudo mysqldump -u root -p"$1" --all-databases > backup.sql
+if [ $? -ne 0 ]; then
+    echo "Failed to create MySQL dump."
+    exit 1
+fi
 tar -czf "$ARCHIVE_NAME" backup.sql
