@@ -14,7 +14,7 @@ if __name__ == "__main__":
     url_tasks = "https://jsonplaceholder.typicode.com/todos"
     params = {"userId": user_id}
     user = requests.get(url_user).json()
-    name = user.get("name")
+    name = user.get("username")
     tasks = requests.get(url_tasks, params=params).json()
 
     file_name = f"{user_id}.csv"
