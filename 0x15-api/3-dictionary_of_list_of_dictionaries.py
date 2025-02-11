@@ -14,8 +14,8 @@ if __name__ == "__main__":
     users = requests.get(url_user).json()
 
     dic = {}
-    lis = []
     for user in users:
+        lis = []
         user_id = user.get("userId")
         params = {"userId": user_id}
         tasks = requests.get(url_tasks, params=params).json()
