@@ -16,7 +16,7 @@ if __name__ == "__main__":
     dic = {}
     for user in users:
         lis = []
-        user_id = user.get("userId")
+        user_id = user.get("id")
         params = {"userId": user_id}
         tasks = requests.get(url_tasks, params=params).json()
         for task in tasks:
