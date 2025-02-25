@@ -3,6 +3,7 @@
 module to retrieve subscribers data
 """
 
+
 def number_of_subscribers(subreddit):
     """
     queries the Reddit API and returns the number of subscribers
@@ -10,8 +11,8 @@ def number_of_subscribers(subreddit):
     import requests
 
     res = requests.get(f"https://www.reddit.com/r/{subreddit}/about.json",
-            headers={"USER-AGENT":"My-User-Agent"},
-            allow_redirects=False)
+                       headers={"USER-AGENT": "My-User-Agent"},
+                       allow_redirects=False)
 
     if res.status_code >= 300:
         return 0
